@@ -72,7 +72,10 @@ INPUT_SCHEMA = {
 
 # Main entry point
 if __name__ == "__main__":
+    def get_schema():
+        return INPUT_SCHEMA
+    
     run(
         start_job_handler=process_job,
-        input_schema=INPUT_SCHEMA
+        input_schema_handler=get_schema
     )
