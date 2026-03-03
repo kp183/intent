@@ -14,56 +14,117 @@ load_dotenv()
 from masumi import run
 from agent import process_job
 
-# Define input schema
+# Define input schema - Sokosumi format
 INPUT_SCHEMA = {
     "input_data": [
         {
             "id": "prospect_name",
-            "type": "string",
-            "name": "Prospect Name"
+            "type": "text",
+            "name": "Prospect Name",
+            "data": {
+                "placeholder": "Enter prospect's full name",
+                "description": "Full name of the prospect"
+            },
+            "validations": [
+                {"validation": "min", "value": "2"},
+                {"validation": "max", "value": "100"}
+            ]
         },
         {
             "id": "prospect_email",
-            "type": "string",
-            "name": "Prospect Email"
+            "type": "email",
+            "name": "Prospect Email",
+            "data": {
+                "placeholder": "prospect@company.com",
+                "description": "Email address of the prospect"
+            },
+            "validations": [
+                {"validation": "format", "value": "email"}
+            ]
         },
         {
             "id": "prospect_role",
-            "type": "string",
-            "name": "Prospect Role"
+            "type": "text",
+            "name": "Prospect Role",
+            "data": {
+                "placeholder": "e.g., VP of Sales",
+                "description": "Job title or role of the prospect"
+            },
+            "validations": [
+                {"validation": "min", "value": "2"},
+                {"validation": "max", "value": "100"}
+            ]
         },
         {
             "id": "company_name",
-            "type": "string",
-            "name": "Company Name"
+            "type": "text",
+            "name": "Company Name",
+            "data": {
+                "placeholder": "Enter company name",
+                "description": "Name of the prospect's company"
+            },
+            "validations": [
+                {"validation": "min", "value": "2"},
+                {"validation": "max", "value": "100"}
+            ]
         },
         {
             "id": "company_industry",
-            "type": "string",
-            "name": "Company Industry"
+            "type": "text",
+            "name": "Company Industry",
+            "data": {
+                "placeholder": "e.g., Technology, Healthcare",
+                "description": "Industry sector of the company"
+            },
+            "validations": [
+                {"validation": "min", "value": "2"},
+                {"validation": "max", "value": "50"}
+            ]
         },
         {
             "id": "company_size",
-            "type": "options",
+            "type": "option",
             "name": "Company Size",
-            "options": ["startup", "small", "medium", "large", "enterprise"]
+            "data": {
+                "description": "Size of the company",
+                "values": ["startup", "small", "medium", "large", "enterprise"]
+            },
+            "validations": [
+                {"validation": "min", "value": "1"},
+                {"validation": "max", "value": "1"}
+            ]
         },
         {
             "id": "intent_signal",
-            "type": "options",
+            "type": "option",
             "name": "Intent Signal Type",
-            "options": [
-                "job_change",
-                "funding_event",
-                "technology_adoption",
-                "company_growth",
-                "industry_trend"
+            "data": {
+                "description": "Type of intent signal detected",
+                "values": [
+                    "job_change",
+                    "funding_event",
+                    "technology_adoption",
+                    "company_growth",
+                    "industry_trend"
+                ]
+            },
+            "validations": [
+                {"validation": "min", "value": "1"},
+                {"validation": "max", "value": "1"}
             ]
         },
         {
             "id": "intent_description",
-            "type": "string",
-            "name": "Intent Description"
+            "type": "text",
+            "name": "Intent Description",
+            "data": {
+                "placeholder": "Describe the intent signal",
+                "description": "Detailed description of the intent signal"
+            },
+            "validations": [
+                {"validation": "min", "value": "10"},
+                {"validation": "max", "value": "500"}
+            ]
         }
     ]
 }
