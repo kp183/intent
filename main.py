@@ -72,5 +72,5 @@ INPUT_SCHEMA = {
 if __name__ == "__main__":
     run(
         start_job_handler=process_job,
-        input_schema_handler=INPUT_SCHEMA
+        input_schema=INPUT_SCHEMA
     )
